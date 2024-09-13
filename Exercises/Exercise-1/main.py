@@ -1,20 +1,14 @@
-import requests
+"""Main script to initiate file processing asynchronously."""
+import asyncio
+from files.controller import FileController
 
-download_uris = [
-    "https://divvy-tripdata.s3.amazonaws.com/Divvy_Trips_2018_Q4.zip",
-    "https://divvy-tripdata.s3.amazonaws.com/Divvy_Trips_2019_Q1.zip",
-    "https://divvy-tripdata.s3.amazonaws.com/Divvy_Trips_2019_Q2.zip",
-    "https://divvy-tripdata.s3.amazonaws.com/Divvy_Trips_2019_Q3.zip",
-    "https://divvy-tripdata.s3.amazonaws.com/Divvy_Trips_2019_Q4.zip",
-    "https://divvy-tripdata.s3.amazonaws.com/Divvy_Trips_2020_Q1.zip",
-    "https://divvy-tripdata.s3.amazonaws.com/Divvy_Trips_2220_Q1.zip",
-]
+async def main() -> None:
+    """Main entry point of the application.
 
-
-def main():
-    # your code here
-    pass
-
+    This function initializes the FileController and processes the files.
+    """
+    controller = FileController()
+    await controller.process_files()
 
 if __name__ == "__main__":
-    main()
+    asyncio.run(main())
